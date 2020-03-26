@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage('Build') {
          steps {
-            sh 'docker version'
+            sh 'kubectl version --client'
          }
       }
       stage('Deploy') {
