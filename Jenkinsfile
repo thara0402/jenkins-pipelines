@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage('Prepare') {
          steps {
-            sh 'pwd'
+            kubernetesDeploy(kubeconfigId:'mykubeconfig')
          }
       }
       stage('Build') {
