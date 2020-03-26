@@ -9,7 +9,7 @@ pipeline {
       }
       stage('Build') {
          steps {
-            sh 'kubectl version --client'
+            sh 'kubectl get pod'
          }
       }
       stage('Deploy') {
