@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage('Build') {
          steps {
-            sh 'sudo docker version'
+            echo 'Hello Jenkins'
          }
       }
       stage('Deploy') {
