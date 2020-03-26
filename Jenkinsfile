@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage('Prepare') {
          steps {
-            kubernetesDeploy(kubeconfigId:'mykubeconfig', configs:'config.yaml')
+            kubernetesDeploy(kubeconfigId:'mykubeconfig', configs:'deployment.yaml')
          }
       }
       stage('Build') {
