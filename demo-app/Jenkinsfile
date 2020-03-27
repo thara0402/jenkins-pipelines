@@ -1,6 +1,8 @@
 pipeline {
    agent any
-
+   environment {
+      DOCKER_IMAGE_TAG = '0.10.0'
+   }
    stages {
       stage('Prepare') {
          steps {
