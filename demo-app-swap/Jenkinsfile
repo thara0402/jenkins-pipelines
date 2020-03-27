@@ -2,7 +2,7 @@ pipeline {
    agent any
    environment {
       NAMESPACE = 'customer-a'
-      VERSION = 'v1'
+      VERSION = 'green'
    }
    stages {
       stage('Prepare') {
