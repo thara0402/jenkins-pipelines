@@ -5,7 +5,6 @@ pipeline {
       stage('Prepare') {
          steps {
             kubernetesDeploy(kubeconfigId:'mykubeconfig', configs:'deployment.yaml')
-            sh 'kubectl version'
          }
       }
       stage('Build') {
