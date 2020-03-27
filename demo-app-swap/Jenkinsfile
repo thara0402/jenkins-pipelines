@@ -1,0 +1,22 @@
+pipeline {
+   agent any
+   environment {
+      NAMESPACE = 'customer-a'
+      VERSION = 'green'
+   }
+   stages {
+      stage('Prepare') {
+         steps {
+            sh 'kubectl version --client'
+         }
+      }
+      stage('Swap') {
+         steps {
+            kubernetesDeploy(
+               kubeconfigId:'mykubeconfig',
+               configs:'demo-app-swap/service.yaml'
+            )
+         }
+      }
+   }
+}

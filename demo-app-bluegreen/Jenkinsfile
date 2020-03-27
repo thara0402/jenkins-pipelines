@@ -1,0 +1,23 @@
+pipeline {
+   agent any
+   environment {
+      DOCKER_IMAGE_TAG = '0.12.0'
+      NAMESPACE = 'customer-a'
+      VERSION = 'green'
+   }
+   stages {
+      stage('Prepare') {
+         steps {
+            sh 'kubectl version --client'
+         }
+      }
+      stage('Deploy') {
+         steps {
+            kubernetesDeploy(
+               kubeconfigId:'mykubeconfig',
+               configs:'demo-app-bluegreen/deployment.yaml'
+            )
+         }
+      }
+   }
+}
