@@ -4,19 +4,20 @@ pipeline {
    stages {
       stage('Prepare') {
          steps {
-            kubernetesDeploy(kubeconfigId:'mykubeconfig', configs:'demo-app/deployment.yaml')
-         }
-      }
-      stage('Build') {
-         steps {
             sh 'kubectl version --client'
          }
       }
       stage('Deploy') {
          steps {
-            echo 'Hello Gooner'
+            kubernetesDeploy(
+               kubeconfigId:'mykubeconfig',
+               configs:'demo-app/deployment.yaml'
+            )
+            kubernetesDeploy(
+               kubeconfigId:'mykubeconfig',
+               configs:'demo-app/service.yaml'
+            )
          }
       }
-
    }
 }
