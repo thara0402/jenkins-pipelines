@@ -2,20 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-deployment
+  namespace: $NAMESPACE
   labels:
     app: demo-app
-    version: v10
+    version: $VERSION
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: demo-app
-      version: v10
+      version: $VERSION
   template:
     metadata:
       labels:
         app: demo-app
-        version: v10
+        version: $VERSION
     spec:
       containers:
       - name: k8sdemo
