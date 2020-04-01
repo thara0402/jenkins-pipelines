@@ -25,6 +25,10 @@ pipeline {
                kubeconfigId:'mykubeconfig',
                configs:'nvx-cms/deployment.yaml'
             )
+            kubernetesDeploy(
+               kubeconfigId:'mykubeconfig',
+               configs:'nvx-cms/service.yaml'
+            )
          }
       }
    }
