@@ -1,48 +1,58 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-deployment-$VERSION
+  name: nvx-service-cms-$VERSION
   namespace: $NAMESPACE
   labels:
-    app: demo-app
+    app: nvx-service-cms
     version: $VERSION
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: demo-app
+      app: nvx-service-cms
       version: $VERSION
   template:
     metadata:
       labels:
-        app: demo-app
+        app: nvx-service-cms
         version: $VERSION
     spec:
       containers:
-      - name: k8sdemo
-        image: thara0402/k8sdemo:$DOCKER_IMAGE_TAG
-        ports:
-          - containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
+      - image: thara0402/k8sdemo:$DOCKER_IMAGE_TAG
+        name: nvx-service-cms
         resources:
-          requests:
-            memory: "100Mi"
-            cpu: "100m"
           limits:
-            memory: "200Mi"
-            cpu: "200m"
+#            memory: "512Mi"
+#            cpu: "500m"
+        env:
+        - name: LANG
+          value: en_US.UTF-8
+        - name: LANGUAGE
+          value: en_US:en
+        - name: LC_ALL
+          value: en_US.UTF-8
+        - name: TZ
+          value: Asia/Tokyo 
+        ports:
+        - containerPort: 443
+        - containerPort: 80
+        - containerPort: 22
+        - containerPort: 8443
+        - containerPort: 9443
+        - containerPort: 5701
+        - containerPort: 15701
+        volumeMounts:
+          - name: "data"
+            mountPath: "/sony/data"
+          - name: "log"
+            mountPath: "/sony/nvx/log"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: nvx-cms-data-pvc
+        - name: log
+          persistentVolumeClaim:
+            claimName: nvx-cms-log-pvc
+      imagePullSecrets:
+        - name: nvx-service-secret
