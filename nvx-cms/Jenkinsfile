@@ -11,17 +11,5 @@ pipeline {
             sh 'kubectl version --client'
          }
       }
-      stage('Deploy') {
-         steps {
-            kubernetesDeploy(
-               kubeconfigId:'mykubeconfig',
-               configs:'demo-app/deployment.yaml'
-            )
-            kubernetesDeploy(
-               kubeconfigId:'mykubeconfig',
-               configs:'demo-app/service.yaml'
-            )
-         }
-      }
    }
 }
