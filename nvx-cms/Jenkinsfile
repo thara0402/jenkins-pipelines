@@ -2,13 +2,21 @@ pipeline {
    agent any
    environment {
       DOCKER_IMAGE_TAG = '0.10.0'
-      NAMESPACE = 'customer-a'
+      NAMESPACE = 'customer001'
       VERSION = 'blue'
    }
    stages {
       stage('Prepare') {
          steps {
             sh 'kubectl version --client'
+         }
+      }
+      stage('Deploy') {
+         steps {
+            kubernetesDeploy(
+               kubeconfigId:'mykubeconfig',
+               configs:'nvx-cms/pv.yaml'
+            )
          }
       }
    }
