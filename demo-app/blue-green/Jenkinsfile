@@ -1,6 +1,7 @@
 pipeline {
    agent any
    environment {
+      DOCKER_IMAGE_TAG = '0.12.0'
       NAMESPACE = 'customer-a'
       VERSION = 'green'
    }
@@ -10,11 +11,11 @@ pipeline {
             sh 'kubectl version --client'
          }
       }
-      stage('Swap') {
+      stage('Deploy') {
          steps {
             kubernetesDeploy(
                kubeconfigId:'mykubeconfig',
-               configs:'demo-app-swap/service.yaml'
+               configs:'demo-app/deployment.yaml'
             )
          }
       }
