@@ -15,7 +15,7 @@ pipeline {
          steps {
             kubernetesDeploy(
                kubeconfigId:'mykubeconfig',
-               configs:'demo-app-bluegreen/deployment.yaml'
+               configs:'demo-app/deployment.yaml'
             )
          }
       }
