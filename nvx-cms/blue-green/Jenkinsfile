@@ -3,7 +3,7 @@ pipeline {
    environment {
       DOCKER_IMAGE_TAG = '0.12.0'
       NAMESPACE = 'customer001'
-      VERSION = 'blue'
+      VERSION = 'green'
    }
    stages {
       stage('Prepare') {
