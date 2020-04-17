@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nvx-cms-data-pvc-$VERSION
+  namespace: $NAMESPACE
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+  volumeName: nvx-cms-data-pv-$VERSION
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nvx-cms-log-pvc-$VERSION
+  namespace: $NAMESPACE
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+  volumeName: nvx-cms-log-pv-$VERSION
+
