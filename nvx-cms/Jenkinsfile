@@ -1,7 +1,8 @@
 pipeline {
    agent any
    environment {
-      DOCKER_IMAGE_TAG = '1.0.0-SNAPSHOT'
+      // DOCKER_IMAGE_TAG = '1.0.0-SNAPSHOT'
+      DOCKER_IMAGE_TAG = 'latest'
       NAMESPACE = 'customer001'
       VERSION = 'blue'
    }
