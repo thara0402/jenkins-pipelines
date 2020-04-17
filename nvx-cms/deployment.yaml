@@ -19,7 +19,7 @@ spec:
         version: $VERSION
     spec:
       containers:
-      - image: thara0402/k8sdemo:$DOCKER_IMAGE_TAG
+      - image: sonymst.azurecr.io/nvx-cms:$DOCKER_IMAGE_TAG
         name: nvx-service-cms
         livenessProbe:
           httpGet:
