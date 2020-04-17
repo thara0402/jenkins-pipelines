@@ -20,7 +20,6 @@ spec:
     spec:
       containers:
       - image: sonymst.azurecr.io/nvx-cms:$DOCKER_IMAGE_TAG
-      # - image: nginx:$DOCKER_IMAGE_TAG
         name: nvx-service-cms
         # livenessProbe:
         #   httpGet:
@@ -74,12 +73,5 @@ spec:
         - name: log
           persistentVolumeClaim:
             claimName: nvx-cms-log-pvc
-      # volumes:
-      #   - name: data
-      #     hostPath:
-      #       path: "/home/yuta_matsui/sony/data"
-      #   - name: log
-      #     hostPath:
-      #       path: "/home/yuta_matsui/sony/log/cms"
       imagePullSecrets:
         - name: nvx-service-secret
