@@ -19,8 +19,8 @@ spec:
         version: $VERSION
     spec:
       containers:
-      # - image: sonymst.azurecr.io/nvx-cms:$DOCKER_IMAGE_TAG
-      - image: nginx:$DOCKER_IMAGE_TAG
+      - image: sonymst.azurecr.io/nvx-cms:$DOCKER_IMAGE_TAG
+      # - image: nginx:$DOCKER_IMAGE_TAG
         name: nvx-service-cms
         livenessProbe:
           httpGet:
