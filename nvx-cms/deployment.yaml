@@ -67,19 +67,19 @@ spec:
             mountPath: "/sony/data"
           - name: "log"
             mountPath: "/sony/nvx/log"
-      # volumes:
-      #   - name: data
-      #     persistentVolumeClaim:
-      #       claimName: nvx-cms-data-pvc
-      #   - name: log
-      #     persistentVolumeClaim:
-      #       claimName: nvx-cms-log-pvc
       volumes:
         - name: data
-          hostPath:
-            path: "/home/yuta_matsui/sony/data"
+          persistentVolumeClaim:
+            claimName: nvx-cms-data-pvc
         - name: log
-          hostPath:
-            path: "/home/yuta_matsui/sony/log/cms"
+          persistentVolumeClaim:
+            claimName: nvx-cms-log-pvc
+      # volumes:
+      #   - name: data
+      #     hostPath:
+      #       path: "/home/yuta_matsui/sony/data"
+      #   - name: log
+      #     hostPath:
+      #       path: "/home/yuta_matsui/sony/log/cms"
       imagePullSecrets:
         - name: nvx-service-secret
