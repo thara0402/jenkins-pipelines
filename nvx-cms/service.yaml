@@ -6,8 +6,8 @@ metadata:
   labels:
     app: nvx-service-cms
     version: $VERSION
-  annotations:
-    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  # annotations:
+  #   service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
   type: LoadBalancer
   ports:
